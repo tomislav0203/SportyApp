@@ -1,0 +1,65 @@
+﻿@using SportyWebApp.Models
+@model UserLoginModel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/login.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/register.css" rel="stylesheet" type="text/css" />
+    <title>Login</title>
+</head>
+<body>
+
+    <div id="divForm" class="centered">
+        <div>
+            <img src="~/Images/title.png" id="logoTitle" />
+        </div>
+        <div>
+            <form action = "@Url.Action("Submit", "User")" method="post">
+                <table id="tableForm">    
+                    @if (Model.UserNotExist)
+                    {   
+                        <tr>
+                            <td></td>
+                            <td class="errorMessage">Uneseno korisničko ime ili lozinka je neispravno.</td>
+                        </tr>
+                    }
+                    @if (Model.InternetNotAvaiable)
+                    {
+                        <tr>
+                            <td></td>
+                            <id class="errorMessage internetConnectionMessage">Provjerite internet konekciju.</id>
+                        </tr>
+                    }
+                    <tr>
+                        <td class="formLabels">Korisničko ime:</td>
+                        <td><input type="text" name="username" class="reg-input"/></td>
+                    </tr>
+                    <tr class="tableRows">
+                        <td class="formLabels">Lozinka:</td> 
+                        <td><input type="password" class="reg-input" name="password"></td>
+                    </tr>
+                    <tr class="tableRows">
+                        <td></td>
+                        <td id="buttonsTd">
+                            <div id="buttonsDiv">
+                                <input type="submit" value="Prijava" id="loginButton" class="btn btn-block">
+                                <input type="button" value="Registracija" onclick="location.href='@Url.Action("Register", "User")'" id="registerButton" class="btn btn-block">
+                            </div>                            
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

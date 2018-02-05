@@ -1,0 +1,58 @@
+﻿@model SportyWebApp.Models.UserRegisterModel
+
+@{
+    Layout = "";
+}
+<link href="~/Content/login.css" rel="stylesheet" />
+<link href="~/Content/register.css" rel="stylesheet" />
+
+<div id="divForm" class="centered">
+    <div>
+        <img src="~/Images/title.png" id="logoTitle" />
+    </div>
+    <h2 style="text-align:center; color:blue;">Registracija</h2>
+    <div>
+        @using (Html.BeginForm(new { action = "/Register" }))
+        {
+            @Html.AntiForgeryToken()
+            <table id="tableForm">
+                <tr class="tableRows">
+                    <td class="formLabels">Ime:</td>
+                    <td><input type="text" name="FirstName" class="reg-input" value="@Model.FirstName"/></td>
+                </tr>
+                <tr class="tableRows">
+                    <td class="formLabels">Prezime:</td>
+                    <td><input type="text" class="reg-input" name="LastName" value="@Model.LastName"></td>
+                </tr>
+                <tr class="tableRows">
+                    <td class="formLabels">Korisničko ime:</td>
+                    <td><input type="text" class="reg-input" name="UserName" value="@Model.UserName"></td>
+                </tr>
+                <tr class="tableRows">
+                    <td class="formLabels">Email:</td>
+                    <td><input type="text" class="reg-input" name="Email" value="@Model.Email"></td>
+                </tr>
+                <tr class="tableRows">
+                    <td class="formLabels">Grad:</td>
+                    <td><input type="text" class="reg-input" name="City" value="@Model.City"></td>
+                </tr>
+                <tr class="tableRows">
+                    <td class="formLabels">Lozinka:</td>
+                    <td><input type="password" class="reg-input" name="Password"></td>
+                </tr>
+                <tr class="tableRows">
+                    <td class="formLabels">Ponovljena lozinka:</td>
+                    <td><input type="password" class="reg-input" name="ConfirmPassword"></td>
+                </tr>
+                <tr class="tableRows">
+                    <td></td>
+                    <td id="errorMessage">@ViewBag.error</td>
+                </tr>
+                <tr class="tableRows">
+                    <td class="formLabels"><a href="/User/Login"><img style="color:blue" src="https://www.shareicon.net/download/2015/12/03/191855_back_256x256.png" alt="Povratak" height="40" width="40"></a></td>
+                    <td><input type="submit" value="Registriraj" class="reg-btn" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+</div>
