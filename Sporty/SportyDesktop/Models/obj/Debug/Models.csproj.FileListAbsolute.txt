@@ -1,0 +1,6 @@
+C:\Users\Tomislav\Documents\Visual Studio 2017\Projects\SportyDesktop\Models\bin\Debug\Models.dll
+C:\Users\Tomislav\Documents\Visual Studio 2017\Projects\SportyDesktop\Models\bin\Debug\Models.pdb
+C:\Users\Tomislav\Documents\Visual Studio 2017\Projects\SportyDesktop\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+C:\Users\Tomislav\Documents\Visual Studio 2017\Projects\SportyDesktop\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\Tomislav\Documents\Visual Studio 2017\Projects\SportyDesktop\Models\obj\Debug\Models.dll
+C:\Users\Tomislav\Documents\Visual Studio 2017\Projects\SportyDesktop\Models\obj\Debug\Models.pdb

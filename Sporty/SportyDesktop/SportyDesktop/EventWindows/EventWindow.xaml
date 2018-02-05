@@ -1,0 +1,77 @@
+﻿<Window x:Class="SportyDesktop.EventWindows.EventWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SportyDesktop.EventWindows"
+        xmlns:local1="clr-namespace:SportyDesktop.ViewModels"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Event" Height="700" Width="1280"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource BigFontSize}">
+
+    <Window.DataContext>
+        <local1:EventViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="0,0,0,20" Orientation="Horizontal" VerticalAlignment="Stretch" Background="#FFF1C880">
+            <Image Margin="30,10,0,10" Source="/Content/handballBall.png" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100"/>
+            <StackPanel Margin="50,0,250,0" Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock Margin="0,0,0,5" Text="{Binding CurrentEvent.SportName}" HorizontalAlignment="Left"/>
+                <TextBlock Margin="0,0,0,5" Text="{Binding CurrentEvent.Location}" HorizontalAlignment="Left"/>
+                <TextBlock Margin="0,0,0,5" Text="{Binding CurrentEvent.StartTime,  StringFormat=Vrijeme: {0:dd/MM/yyyy HH:mm}}" HorizontalAlignment="Left"/>
+                <TextBlock Margin="0,0,0,5" HorizontalAlignment="Left">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}Broj slobodnih mjesta: {0} / {1}">
+                            <Binding Path="FreePlayers" />
+                            <Binding Path="MaxPlayers" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <ListView Grid.Row="1" Margin="0,0,0,0" Name="ListView2" ScrollViewer.VerticalScrollBarVisibility="Visible"  HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding Participants}" Width="580" MaxHeight="350">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0,0,0,10" Orientation="Horizontal" VerticalAlignment="Stretch" Background="#FFF1C880">
+                        <Image Margin="30,10,0,10" Source="/Content/PersonImgSmall.png" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100"/>
+                        <StackPanel Margin="50,30,250,0" Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <TextBlock Margin="0,0,0,5" Text="{Binding FirstName}"/>
+                                <TextBlock Margin="5,0,0,5" Text="{Binding LastName}"/>
+                            </StackPanel>
+                            <TextBlock Margin="0,0,0,5" Text="{Binding StartTime,  StringFormat=Vrijeme: {0:dd/MM/yyyy HH:mm}}" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                        <StackPanel Margin="-100,30,10,0" Orientation="Horizontal">
+                            <TextBlock Margin="0,0,15,0">Ocjena:</TextBlock>
+                            <ComboBox VerticalAlignment="Top">
+                                <ComboBox.ItemsSource>
+                                    <x:Array Type="{x:Type sys:Int32}">
+                                        <sys:Int32 >1</sys:Int32>
+                                        <sys:Int32>2</sys:Int32>
+                                        <sys:Int32>3</sys:Int32>
+                                        <sys:Int32>4</sys:Int32>
+                                        <sys:Int32>5</sys:Int32>
+                                    </x:Array>
+                                </ComboBox.ItemsSource>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Window>

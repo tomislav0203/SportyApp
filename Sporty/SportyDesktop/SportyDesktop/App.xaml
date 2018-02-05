@@ -1,0 +1,13 @@
+﻿<Application x:Class="SportyDesktop.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SportyDesktop"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <Style x:Key="BigFontSize" TargetType="{x:Type Control}">
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+
+    </Application.Resources>
+</Application>

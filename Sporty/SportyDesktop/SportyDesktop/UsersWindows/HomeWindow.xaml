@@ -1,0 +1,159 @@
+﻿<Window x:Class="SportyDesktop.UsersWindows.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local1="clr-namespace:SportyDesktop.ViewModels"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Sporty home" Height="700" Width="1280"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource BigFontSize}">
+
+    <Window.DataContext>
+        <local1:HomeViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Margin="0,25,0,0" HorizontalAlignment="Center" FontSize="40" FontWeight="DemiBold" Foreground="#FF0667D0">Sporty</TextBlock>
+
+        <TextBlock Grid.Column="1" Margin="100,40,0,0" HorizontalAlignment="Left" FontSize="30" FontWeight="DemiBold" Foreground="#FF0667D0">DANAS U GRADU</TextBlock>
+
+        <Border Grid.Column="0" Grid.Row="1" BorderBrush="#FF0667D0" BorderThickness="0,2,2,0">
+
+            <Grid  Background="#FFB5D5F5">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Margin="20,10,20,10" Grid.Row="1" Content="Danas u gradu"  Click="Home_Button_Click" Command="{Binding GetTodayEventsCommand}"></Button>
+                    <Button Margin="20,10,20,10" Grid.Row="2" Content="Moji događaji" Click="MyEvents_Button_Click" Command="{Binding GetUserEventsPast}"></Button>
+                    <Button Margin="20,10,20,10" Grid.Row="3" Content="Traži događaje" Click="SearchEvents_Button_Click"  Command="{Binding FindEventsMenu}"></Button>
+                    <Button Margin="20,10,20,10" Grid.Row="4" Content="Postavke profila"></Button>
+                    <Button Margin="20,10,20,10" Grid.Row="5" Content="Odjava"></Button>
+
+                </Grid>
+
+            </Grid>
+
+        </Border>
+
+        <Border Grid.Column="1" Grid.Row="1" BorderBrush="#FF0667D0" BorderThickness="0,2,0,0">
+            <StackPanel>
+
+                <Grid Margin="0,20,0,0" Name="eventOptions" Visibility="Collapsed" Height="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="1" Content="Prošli događaji"  Command="{Binding GetUserEventsPast}"></Button>
+                    <Button Grid.Column="3" Content="Budući događaji" Command="{Binding GetUserEventsFuture}"></Button>
+                </Grid>
+
+                <StackPanel Name="eventSearch" Visibility="Collapsed">
+
+                    <TextBlock Text="Pretražite događaje" FontSize="25" HorizontalAlignment="Center"></TextBlock>
+
+                    <Grid Margin="0,20,0,0" Visibility="Visible" Height="Auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="0,5,10,0">Sport</Label>
+                        <ComboBox Grid.Row="0" Grid.Column="1" Margin="0,10"  Text="-- Odaberite sport --" IsEditable="True" IsReadOnly="True" ItemsSource="{Binding SportList}" DisplayMemberPath="Name" SelectedValue="{Binding SportFind}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="0,0,10,0">Datum</Label>
+                        <DatePicker Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Name="datePicker1" VerticalAlignment="Top" Width="200" SelectedDate="{Binding DateFind}"/>
+
+                        <Label Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="0,5,10,0">Grad</Label>
+                        <TextBox Grid.Row="0" Grid.Column="3" Margin="0,10,10,10" Text="{Binding CityNameFind}"/>
+
+                        <Label Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,0">Broj slobodnih mjesta</Label>
+                        <ComboBox Grid.Row="1" Grid.Column="3" Width="60" HorizontalAlignment="Left" Margin="0,0,0,3" SelectedValue="{Binding FreePlacesFind}">
+                            <ComboBox.ItemsSource>
+                                <x:Array Type="{x:Type sys:Int32}">
+                                    <sys:Int32 >1</sys:Int32>
+                                    <sys:Int32>2</sys:Int32>
+                                    <sys:Int32>3</sys:Int32>
+                                    <sys:Int32>4</sys:Int32>
+                                    <sys:Int32>5</sys:Int32>
+                                    <sys:Int32>6</sys:Int32>
+                                    <sys:Int32>7</sys:Int32>
+                                    <sys:Int32>8</sys:Int32>
+                                    <sys:Int32>9</sys:Int32>
+                                    <sys:Int32>10</sys:Int32>
+                                </x:Array>
+                            </ComboBox.ItemsSource>
+                        </ComboBox>
+
+                        <Button Grid.Row="1" Grid.Column="4" Margin="50,0,50,0" Content="Traži"  Command="{Binding FindEventsCommand}"/>
+
+                    </Grid>
+                </StackPanel>
+
+
+                <!--<Image Grid.Column="4" gif:ImageBehavior.RepeatBehavior="3x" gif:ImageBehavior.AnimatedSource="/Content/loader.gif" Height="100" Width="100"/>-->
+
+
+                <ListView Margin="80,80,0,80" Name="ListView1" SelectionChanged="EventSelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible"  HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding Path=EventList}" Width="800" MaxHeight="350">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,20" Orientation="Horizontal" VerticalAlignment="Stretch" Background="#FFF1C880">
+                                <Image Margin="30,10,0,10" Source="/Content/handballBall.png" HorizontalAlignment="Center" VerticalAlignment="Top" Height="100"/>
+                                <StackPanel Margin="50,0,250,0" Orientation="Vertical" VerticalAlignment="Center">
+                                    <TextBlock Margin="0,0,0,5" Text="{Binding SportName}" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="0,0,0,5" Text="{Binding Location}" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="0,0,0,5" Text="{Binding StartTime,  StringFormat=Vrijeme: {0:dd/MM/yyyy HH:mm}}" HorizontalAlignment="Left"/>
+                                    <TextBlock Margin="0,0,0,5" HorizontalAlignment="Left">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}Broj slobodnih mjesta: {0} / {1}">
+                                                <Binding Path="FreePlayers" />
+                                                <Binding Path="MaxPlayers" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackPanel>
+
+        </Border>
+
+
+
+    </Grid>
+</Window>

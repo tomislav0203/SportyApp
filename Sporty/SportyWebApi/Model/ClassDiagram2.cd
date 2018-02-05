@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SportFinderApi.Models.City">
+    <Position X="6" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModels\City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SportFinderApi.Models.Event">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAIAAIAAAAAIAAAAAAAECSAAAAACAA=</HashCode>
+      <FileName>DomainModels\Event.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SportFinderApi.Models.Rating">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAAA=</HashCode>
+      <FileName>DomainModels\Rating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SportFinderApi.Models.Sport">
+    <Position X="3.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainModels\Sport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SportFinderApi.Models.Subscription">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAIAAAAAAQAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>DomainModels\Subscription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SportFinderApi.Models.User">
+    <Position X="8.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAAAAIAgAAAAAAAgAAAAACAQAEAAAAAAg=</HashCode>
+      <FileName>DomainModels\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
